@@ -1,23 +1,20 @@
 package com.company;
-public class MyRunnable implements Runnable {
 
+import java.util.concurrent.Callable;
+
+public class MyCallable implements Callable<String> {
     private String name;
-
-    public MyRunnable(String name) {
+    public MyCallable(String name) {
         this.name = name;
     }
-
     @Override
-    public void run() {
+    public String call() throws Exception {
         System.out.println(name + " đang thực thi...");
-
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-        System.out.println(name + " kết thúc.");
+        return name;
     }
-
 }
